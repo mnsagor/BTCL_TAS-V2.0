@@ -46,6 +46,10 @@ class UpdateEmployeeRequest extends FormRequest
                 'required',
                 'unique:employees,nid,' . request()->route('employee')->id,
             ],
+            'payroll_emp'    => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

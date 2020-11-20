@@ -81,6 +81,14 @@
                                         {{ $employee->nid }}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.employee.fields.payroll_emp') }}
+                                    </th>
+                                    <td>
+                                        {{ $employee->payroll_emp }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">

@@ -80,6 +80,14 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employee.fields.nid_helper') }}</span>
                         </div>
+                        <div class="form-group {{ $errors->has('payroll_emp') ? 'has-error' : '' }}">
+                            <label for="payroll_emp">{{ trans('cruds.employee.fields.payroll_emp') }}</label>
+                            <input class="form-control" type="text" name="payroll_emp" id="payroll_emp" value="{{ old('payroll_emp', '') }}">
+                            @if($errors->has('payroll_emp'))
+                                <span class="help-block" role="alert">{{ $errors->first('payroll_emp') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.employee.fields.payroll_emp_helper') }}</span>
+                        </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">
                                 {{ trans('global.save') }}

@@ -30,6 +30,7 @@ class Employee extends Model
         'mobile',
         'email',
         'nid',
+        'payroll_emp',
     ];
 
     protected $fillable = [
@@ -40,6 +41,7 @@ class Employee extends Model
         'email',
         'sex',
         'nid',
+        'payroll_emp',
         'created_at',
         'updated_at',
         'deleted_at',

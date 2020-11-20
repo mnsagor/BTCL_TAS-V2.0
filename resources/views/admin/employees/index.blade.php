@@ -50,6 +50,9 @@
                                         {{ trans('cruds.employee.fields.nid') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.employee.fields.payroll_emp') }}
+                                    </th>
+                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -77,6 +80,9 @@
                                                 <option value="{{ $item->name }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
+                                    </td>
+                                    <td>
+                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                                     </td>
                                     <td>
                                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -117,6 +123,9 @@
                                         </td>
                                         <td>
                                             {{ $employee->nid ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $employee->payroll_emp ?? '' }}
                                         </td>
                                         <td>
                                             @can('employee_show')

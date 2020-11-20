@@ -46,6 +46,10 @@ class StoreEmployeeRequest extends FormRequest
                 'required',
                 'unique:employees',
             ],
+            'payroll_emp'    => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

@@ -9,7 +9,7 @@ class CreateDriversTable extends Migration
     public function up()
     {
         Schema::create('drivers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('emp_type')->nullable();
             $table->string('emp_number')->nullable();
