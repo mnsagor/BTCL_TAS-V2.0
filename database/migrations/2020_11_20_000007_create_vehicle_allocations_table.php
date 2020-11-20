@@ -9,7 +9,7 @@ class CreateVehicleAllocationsTable extends Migration
     public function up()
     {
         Schema::create('vehicle_allocations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->date('allotment_date');
             $table->longText('description')->nullable();
             $table->timestamps();

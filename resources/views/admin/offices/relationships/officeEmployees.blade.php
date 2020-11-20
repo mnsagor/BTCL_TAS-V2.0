@@ -46,6 +46,9 @@
                                         {{ trans('cruds.employee.fields.nid') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.employee.fields.payroll_emp') }}
+                                    </th>
+                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -76,6 +79,9 @@
                                         </td>
                                         <td>
                                             {{ $employee->nid ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $employee->payroll_emp ?? '' }}
                                         </td>
                                         <td>
                                             @can('employee_show')

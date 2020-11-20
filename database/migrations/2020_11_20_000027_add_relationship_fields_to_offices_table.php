@@ -9,7 +9,7 @@ class AddRelationshipFieldsToOfficesTable extends Migration
     public function up()
     {
         Schema::table('offices', function (Blueprint $table) {
-            $table->unsignedInteger('region_id');
+            $table->unsignedBigInteger('region_id');
             $table->foreign('region_id', 'region_fk_2497055')->references('id')->on('regions');
         });
     }

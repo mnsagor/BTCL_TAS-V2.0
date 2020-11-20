@@ -4,13 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermissionsTable extends Migration
+class CreatePostingAllocationsTable extends Migration
 {
     public function up()
     {
-        Schema::create('permissions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title')->nullable();
+        Schema::create('posting_allocations', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->timestamps();
             $table->softDeletes();
         });

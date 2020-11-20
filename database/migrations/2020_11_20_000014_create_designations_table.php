@@ -9,7 +9,7 @@ class CreateDesignationsTable extends Migration
     public function up()
     {
         Schema::create('designations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('grade');
             $table->string('is_active')->nullable();
