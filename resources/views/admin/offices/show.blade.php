@@ -49,6 +49,30 @@
                                         {{ App\Models\Office::IS_ACTIVE_RADIO[$office->is_active] ?? '' }}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.office.fields.address') }}
+                                    </th>
+                                    <td>
+                                        {{ $office->address }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.office.fields.area') }}
+                                    </th>
+                                    <td>
+                                        {{ $office->area }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.office.fields.contact') }}
+                                    </th>
+                                    <td>
+                                        {{ $office->contact }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">

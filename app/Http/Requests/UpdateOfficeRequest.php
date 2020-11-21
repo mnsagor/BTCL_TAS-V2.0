@@ -26,6 +26,18 @@ class UpdateOfficeRequest extends FormRequest
                 'required',
                 'unique:offices,name,' . request()->route('office')->id,
             ],
+            'address'   => [
+                'string',
+                'nullable',
+            ],
+            'area'      => [
+                'string',
+                'nullable',
+            ],
+            'contact'   => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

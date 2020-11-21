@@ -26,6 +26,18 @@ class StoreOfficeRequest extends FormRequest
                 'required',
                 'unique:offices',
             ],
+            'address'   => [
+                'string',
+                'nullable',
+            ],
+            'area'      => [
+                'string',
+                'nullable',
+            ],
+            'contact'   => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

@@ -45,6 +45,30 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.office.fields.is_active_helper') }}</span>
                         </div>
+                        <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
+                            <label for="address">{{ trans('cruds.office.fields.address') }}</label>
+                            <input class="form-control" type="text" name="address" id="address" value="{{ old('address', $office->address) }}">
+                            @if($errors->has('address'))
+                                <span class="help-block" role="alert">{{ $errors->first('address') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.office.fields.address_helper') }}</span>
+                        </div>
+                        <div class="form-group {{ $errors->has('area') ? 'has-error' : '' }}">
+                            <label for="area">{{ trans('cruds.office.fields.area') }}</label>
+                            <input class="form-control" type="text" name="area" id="area" value="{{ old('area', $office->area) }}">
+                            @if($errors->has('area'))
+                                <span class="help-block" role="alert">{{ $errors->first('area') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.office.fields.area_helper') }}</span>
+                        </div>
+                        <div class="form-group {{ $errors->has('contact') ? 'has-error' : '' }}">
+                            <label for="contact">{{ trans('cruds.office.fields.contact') }}</label>
+                            <input class="form-control" type="text" name="contact" id="contact" value="{{ old('contact', $office->contact) }}">
+                            @if($errors->has('contact'))
+                                <span class="help-block" role="alert">{{ $errors->first('contact') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.office.fields.contact_helper') }}</span>
+                        </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">
                                 {{ trans('global.save') }}
