@@ -15,6 +15,7 @@ class CreateEmployeesTable extends Migration
             $table->string('email')->unique();
             $table->string('sex');
             $table->string('payroll_emp')->nullable();
+            $table->string('is_active')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

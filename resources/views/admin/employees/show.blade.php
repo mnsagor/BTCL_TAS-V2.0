@@ -81,6 +81,14 @@
                                         {{ $employee->payroll_emp }}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.employee.fields.is_active') }}
+                                    </th>
+                                    <td>
+                                        {{ App\Models\Employee::IS_ACTIVE_RADIO[$employee->is_active] ?? '' }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">
