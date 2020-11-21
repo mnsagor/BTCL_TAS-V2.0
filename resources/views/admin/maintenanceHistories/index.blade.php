@@ -21,126 +21,74 @@
                     {{ trans('cruds.maintenanceHistory.title_singular') }} {{ trans('global.list') }}
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class=" table table-bordered table-striped table-hover datatable datatable-MaintenanceHistory">
-                            <thead>
-                                <tr>
-                                    <th width="10">
+                    <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-MaintenanceHistory">
+                        <thead>
+                            <tr>
+                                <th width="10">
 
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.maintenanceHistory.fields.id') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.maintenanceHistory.fields.region_name') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.maintenanceHistory.fields.office_name') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.maintenanceHistory.fields.registration_number') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.maintenanceHistory.fields.date') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.maintenanceHistory.fields.cost') }}
-                                    </th>
-                                    <th>
-                                        &nbsp;
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                        <select class="search">
-                                            <option value>{{ trans('global.all') }}</option>
-                                            @foreach($regions as $key => $item)
-                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select class="search">
-                                            <option value>{{ trans('global.all') }}</option>
-                                            @foreach($offices as $key => $item)
-                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select class="search">
-                                            <option value>{{ trans('global.all') }}</option>
-                                            @foreach($vehicles as $key => $item)
-                                                <option value="{{ $item->registration_number }}">{{ $item->registration_number }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($maintenanceHistories as $key => $maintenanceHistory)
-                                    <tr data-entry-id="{{ $maintenanceHistory->id }}">
-                                        <td>
-
-                                        </td>
-                                        <td>
-                                            {{ $maintenanceHistory->id ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $maintenanceHistory->region_name->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $maintenanceHistory->office_name->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $maintenanceHistory->registration_number->registration_number ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $maintenanceHistory->date ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $maintenanceHistory->cost ?? '' }}
-                                        </td>
-                                        <td>
-                                            @can('maintenance_history_show')
-                                                <a class="btn btn-xs btn-primary" href="{{ route('admin.maintenance-histories.show', $maintenanceHistory->id) }}">
-                                                    {{ trans('global.view') }}
-                                                </a>
-                                            @endcan
-
-                                            @can('maintenance_history_edit')
-                                                <a class="btn btn-xs btn-info" href="{{ route('admin.maintenance-histories.edit', $maintenanceHistory->id) }}">
-                                                    {{ trans('global.edit') }}
-                                                </a>
-                                            @endcan
-
-                                            @can('maintenance_history_delete')
-                                                <form action="{{ route('admin.maintenance-histories.destroy', $maintenanceHistory->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                                </form>
-                                            @endcan
-
-                                        </td>
-
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </th>
+                                <th>
+                                    {{ trans('cruds.maintenanceHistory.fields.id') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.maintenanceHistory.fields.region_name') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.maintenanceHistory.fields.office_name') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.maintenanceHistory.fields.registration_number') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.maintenanceHistory.fields.date') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.maintenanceHistory.fields.cost') }}
+                                </th>
+                                <th>
+                                    &nbsp;
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                                </td>
+                                <td>
+                                    <select class="search">
+                                        <option value>{{ trans('global.all') }}</option>
+                                        @foreach($regions as $key => $item)
+                                            <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="search">
+                                        <option value>{{ trans('global.all') }}</option>
+                                        @foreach($offices as $key => $item)
+                                            <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="search">
+                                        <option value>{{ trans('global.all') }}</option>
+                                        @foreach($vehicles as $key => $item)
+                                            <option value="{{ $item->registration_number }}">{{ $item->registration_number }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
 
@@ -156,14 +104,14 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('maintenance_history_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.maintenance-histories.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
-          return $(entry).data('entry-id')
+      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
+          return entry.id
       });
 
       if (ids.length === 0) {
@@ -185,12 +133,28 @@
   dtButtons.push(deleteButton)
 @endcan
 
-  $.extend(true, $.fn.dataTable.defaults, {
+  let dtOverrideGlobals = {
+    buttons: dtButtons,
+    processing: true,
+    serverSide: true,
+    retrieve: true,
+    aaSorting: [],
+    ajax: "{{ route('admin.maintenance-histories.index') }}",
+    columns: [
+      { data: 'placeholder', name: 'placeholder' },
+{ data: 'id', name: 'id' },
+{ data: 'region_name_name', name: 'region_name.name' },
+{ data: 'office_name_name', name: 'office_name.name' },
+{ data: 'registration_number_registration_number', name: 'registration_number.registration_number' },
+{ data: 'date', name: 'date' },
+{ data: 'cost', name: 'cost' },
+{ data: 'actions', name: '{{ trans('global.actions') }}' }
+    ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
-  });
-  let table = $('.datatable-MaintenanceHistory:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  };
+  let table = $('.datatable-MaintenanceHistory').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
@@ -203,7 +167,7 @@
         .search(value, strict)
         .draw()
   });
-})
+});
 
 </script>
 @endsection
