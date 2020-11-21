@@ -50,6 +50,9 @@
                                         {{ trans('cruds.employee.fields.payroll_emp') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.employee.fields.is_active') }}
+                                    </th>
+                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -88,6 +91,14 @@
                                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                                     </td>
                                     <td>
+                                        <select class="search" strict="true">
+                                            <option value>{{ trans('global.all') }}</option>
+                                            @foreach(App\Models\Employee::IS_ACTIVE_RADIO as $key => $item)
+                                                <option value="{{ $item }}">{{ $item }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
                                     </td>
                                 </tr>
                             </thead>
@@ -117,6 +128,9 @@
                                         </td>
                                         <td>
                                             {{ $employee->payroll_emp ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ App\Models\Employee::IS_ACTIVE_RADIO[$employee->is_active] ?? '' }}
                                         </td>
                                         <td>
                                             @can('employee_show')

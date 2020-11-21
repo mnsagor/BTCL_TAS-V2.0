@@ -46,6 +46,9 @@
                                         {{ trans('cruds.employee.fields.payroll_emp') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.employee.fields.is_active') }}
+                                    </th>
+                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -76,6 +79,9 @@
                                         </td>
                                         <td>
                                             {{ $employee->payroll_emp ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ App\Models\Employee::IS_ACTIVE_RADIO[$employee->is_active] ?? '' }}
                                         </td>
                                         <td>
                                             @can('employee_show')

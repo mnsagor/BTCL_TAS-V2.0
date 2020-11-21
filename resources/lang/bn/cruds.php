@@ -485,6 +485,8 @@ return [
             'deleted_at_helper'  => ' ',
             'payroll_emp'        => 'Payroll Employee ID',
             'payroll_emp_helper' => ' ',
+            'is_active'          => 'Status',
+            'is_active_helper'   => ' ',
         ],
     ],
 ];
