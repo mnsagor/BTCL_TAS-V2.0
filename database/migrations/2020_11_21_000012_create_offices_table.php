@@ -12,6 +12,9 @@ class CreateOfficesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('is_active')->nullable();
+            $table->string('address')->nullable();
+            $table->string('area')->nullable();
+            $table->string('contact')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -37,6 +37,12 @@
                                         {{ trans('cruds.office.fields.is_active') }}
                                     </th>
                                     <th>
+                                        {{ trans('cruds.office.fields.address') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.office.fields.area') }}
+                                    </th>
+                                    <th>
                                         &nbsp;
                                     </th>
                                 </tr>
@@ -58,6 +64,12 @@
                                         </td>
                                         <td>
                                             {{ App\Models\Office::IS_ACTIVE_RADIO[$office->is_active] ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $office->address ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $office->area ?? '' }}
                                         </td>
                                         <td>
                                             @can('office_show')
