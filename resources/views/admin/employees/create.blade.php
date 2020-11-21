@@ -72,14 +72,6 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.employee.fields.sex_helper') }}</span>
                         </div>
-                        <div class="form-group {{ $errors->has('nid') ? 'has-error' : '' }}">
-                            <label class="required" for="nid">{{ trans('cruds.employee.fields.nid') }}</label>
-                            <input class="form-control" type="text" name="nid" id="nid" value="{{ old('nid', '') }}" required>
-                            @if($errors->has('nid'))
-                                <span class="help-block" role="alert">{{ $errors->first('nid') }}</span>
-                            @endif
-                            <span class="help-block">{{ trans('cruds.employee.fields.nid_helper') }}</span>
-                        </div>
                         <div class="form-group {{ $errors->has('payroll_emp') ? 'has-error' : '' }}">
                             <label for="payroll_emp">{{ trans('cruds.employee.fields.payroll_emp') }}</label>
                             <input class="form-control" type="text" name="payroll_emp" id="payroll_emp" value="{{ old('payroll_emp', '') }}">

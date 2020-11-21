@@ -47,9 +47,6 @@
                                         {{ trans('cruds.employee.fields.email') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.employee.fields.nid') }}
-                                    </th>
-                                    <th>
                                         {{ trans('cruds.employee.fields.payroll_emp') }}
                                     </th>
                                     <th>
@@ -91,9 +88,6 @@
                                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                                     </td>
                                     <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
                                     </td>
                                 </tr>
                             </thead>
@@ -120,9 +114,6 @@
                                         </td>
                                         <td>
                                             {{ $employee->email ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $employee->nid ?? '' }}
                                         </td>
                                         <td>
                                             {{ $employee->payroll_emp ?? '' }}

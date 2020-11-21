@@ -29,7 +29,6 @@ class Employee extends Model
         'name',
         'mobile',
         'email',
-        'nid',
         'payroll_emp',
     ];
 
@@ -40,7 +39,6 @@ class Employee extends Model
         'mobile',
         'email',
         'sex',
-        'nid',
         'payroll_emp',
         'created_at',
         'updated_at',
