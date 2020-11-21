@@ -75,14 +75,6 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.employee.fields.nid') }}
-                                    </th>
-                                    <td>
-                                        {{ $employee->nid }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>
                                         {{ trans('cruds.employee.fields.payroll_emp') }}
                                     </th>
                                     <td>
