@@ -265,6 +265,8 @@ return [
             'is_posted_helper'        => ' ',
             'is_allocated'            => 'Vehicle Allocation Status',
             'is_allocated_helper'     => ' ',
+            'is_active'               => 'Status',
+            'is_active_helper'        => ' ',
         ],
     ],
     'postingAllocation'  => [
