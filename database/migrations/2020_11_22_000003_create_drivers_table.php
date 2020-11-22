@@ -18,6 +18,7 @@ class CreateDriversTable extends Migration
             $table->date('dl_validity_year');
             $table->string('is_posted')->nullable();
             $table->string('is_allocated')->nullable();
+            $table->string('is_active')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

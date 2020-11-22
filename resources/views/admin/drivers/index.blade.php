@@ -44,13 +44,13 @@
                                         {{ trans('cruds.driver.fields.mobile') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.driver.fields.dl_number') }}
-                                    </th>
-                                    <th>
                                         {{ trans('cruds.driver.fields.dl_validity_year') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.driver.fields.is_posted') }}
+                                    </th>
+                                    <th>
+                                        {{ trans('cruds.driver.fields.is_active') }}
                                     </th>
                                     <th>
                                         &nbsp;
@@ -75,14 +75,19 @@
                                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                                     </td>
                                     <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
                                     </td>
                                     <td>
                                         <select class="search" strict="true">
                                             <option value>{{ trans('global.all') }}</option>
                                             @foreach(App\Models\Driver::IS_POSTED_RADIO as $key => $item)
+                                                <option value="{{ $item }}">{{ $item }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="search" strict="true">
+                                            <option value>{{ trans('global.all') }}</option>
+                                            @foreach(App\Models\Driver::IS_ACTIVE_RADIO as $key => $item)
                                                 <option value="{{ $item }}">{{ $item }}</option>
                                             @endforeach
                                         </select>
@@ -113,13 +118,13 @@
                                             {{ $driver->mobile ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $driver->dl_number ?? '' }}
-                                        </td>
-                                        <td>
                                             {{ $driver->dl_validity_year ?? '' }}
                                         </td>
                                         <td>
                                             {{ App\Models\Driver::IS_POSTED_RADIO[$driver->is_posted] ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ App\Models\Driver::IS_ACTIVE_RADIO[$driver->is_active] ?? '' }}
                                         </td>
                                         <td>
                                             @can('driver_show')

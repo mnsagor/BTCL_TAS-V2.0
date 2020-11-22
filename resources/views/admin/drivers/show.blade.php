@@ -89,6 +89,14 @@
                                         {{ App\Models\Driver::IS_ALLOCATED_RADIO[$driver->is_allocated] ?? '' }}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.driver.fields.is_active') }}
+                                    </th>
+                                    <td>
+                                        {{ App\Models\Driver::IS_ACTIVE_RADIO[$driver->is_active] ?? '' }}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">
