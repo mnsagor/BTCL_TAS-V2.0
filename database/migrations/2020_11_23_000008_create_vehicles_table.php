@@ -28,6 +28,7 @@ class CreateVehiclesTable extends Migration
             $table->date('entry_date')->nullable();
             $table->string('vehicle_allocation_status')->nullable();
             $table->string('driver_allocation_status')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

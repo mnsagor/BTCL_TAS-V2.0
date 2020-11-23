@@ -235,6 +235,14 @@
                                         @endforeach
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.vehicle.fields.description') }}
+                                    </th>
+                                    <td>
+                                        {!! $vehicle->description !!}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="form-group">
