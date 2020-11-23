@@ -6,12 +6,12 @@ $(document).ready(function () {
   })
 
   $('.date').datetimepicker({
-    format: 'DD/MM/YYYY',
+    format: 'DD-MM-YYYY',
     locale: 'en'
   })
 
   $('.datetime').datetimepicker({
-    format: 'DD/MM/YYYY HH:mm:ss',
+    format: 'DD-MM-YYYY HH:mm:ss',
     locale: 'en',
     sideBySide: true
   })
