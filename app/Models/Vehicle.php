@@ -82,6 +82,7 @@ class Vehicle extends Model implements HasMedia
         'entry_date',
         'vehicle_allocation_status',
         'driver_allocation_status',
+        'description',
         'created_at',
         'updated_at',
         'deleted_at',

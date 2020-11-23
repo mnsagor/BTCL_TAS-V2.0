@@ -265,6 +265,8 @@ return [
             'is_posted_helper'        => ' ',
             'is_allocated'            => 'Vehicle Allocation Status',
             'is_allocated_helper'     => ' ',
+            'is_active'               => 'Status',
+            'is_active_helper'        => ' ',
         ],
     ],
     'postingAllocation'  => [
@@ -379,6 +381,8 @@ return [
             'driver_allocation_status_helper'  => ' ',
             'image'                            => 'Vehicle Image',
             'image_helper'                     => ' ',
+            'description'                      => 'Description',
+            'description_helper'               => ' ',
         ],
     ],
     'vehicleAllocation'  => [
