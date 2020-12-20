@@ -9,7 +9,7 @@ class CreateDriverAllocationsTable extends Migration
     public function up()
     {
         Schema::create('driver_allocations', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->date('allocation_date');
             $table->longText('description')->nullable();
             $table->timestamps();

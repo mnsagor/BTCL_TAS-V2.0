@@ -25,6 +25,11 @@ class Driver extends Model
         '0' => 'No',
     ];
 
+    const IS_ACTIVE_RADIO = [
+        '1' => 'Active',
+        '0' => 'Inactive',
+    ];
+
     public static $searchable = [
         'name',
         'mobile',
@@ -47,6 +52,7 @@ class Driver extends Model
         'dl_validity_year',
         'is_posted',
         'is_allocated',
+        'is_active',
         'created_at',
         'updated_at',
         'deleted_at',

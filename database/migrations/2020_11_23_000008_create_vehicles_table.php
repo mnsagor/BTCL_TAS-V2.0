@@ -9,7 +9,7 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('registration_number')->unique();
             $table->string('model')->nullable();
             $table->string('model_year')->nullable();
@@ -28,6 +28,7 @@ class CreateVehiclesTable extends Migration
             $table->date('entry_date')->nullable();
             $table->string('vehicle_allocation_status')->nullable();
             $table->string('driver_allocation_status')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

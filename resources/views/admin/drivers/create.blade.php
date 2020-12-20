@@ -59,6 +59,19 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.driver.fields.dl_validity_year_helper') }}</span>
                         </div>
+                        <div class="form-group {{ $errors->has('is_active') ? 'has-error' : '' }}">
+                            <label>{{ trans('cruds.driver.fields.is_active') }}</label>
+                            @foreach(App\Models\Driver::IS_ACTIVE_RADIO as $key => $label)
+                                <div>
+                                    <input type="radio" id="is_active_{{ $key }}" name="is_active" value="{{ $key }}" {{ old('is_active', '1') === (string) $key ? 'checked' : '' }}>
+                                    <label for="is_active_{{ $key }}" style="font-weight: 400">{{ $label }}</label>
+                                </div>
+                            @endforeach
+                            @if($errors->has('is_active'))
+                                <span class="help-block" role="alert">{{ $errors->first('is_active') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.driver.fields.is_active_helper') }}</span>
+                        </div>
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit">
                                 {{ trans('global.save') }}

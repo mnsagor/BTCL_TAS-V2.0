@@ -21,131 +21,87 @@
                     {{ trans('cruds.employee.title_singular') }} {{ trans('global.list') }}
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class=" table table-bordered table-striped table-hover datatable datatable-Employee">
-                            <thead>
-                                <tr>
-                                    <th width="10">
+                    <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Employee">
+                        <thead>
+                            <tr>
+                                <th width="10">
 
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.employee.fields.id') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.employee.fields.name') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.employee.fields.designation') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.employee.fields.office') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.employee.fields.mobile') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.employee.fields.email') }}
-                                    </th>
-                                    <th>
-                                        {{ trans('cruds.employee.fields.nid') }}
-                                    </th>
-                                    <th>
-                                        &nbsp;
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                        <select class="search">
-                                            <option value>{{ trans('global.all') }}</option>
-                                            @foreach($designations as $key => $item)
-                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select class="search">
-                                            <option value>{{ trans('global.all') }}</option>
-                                            @foreach($offices as $key => $item)
-                                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                        <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                                    </td>
-                                    <td>
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($employees as $key => $employee)
-                                    <tr data-entry-id="{{ $employee->id }}">
-                                        <td>
-
-                                        </td>
-                                        <td>
-                                            {{ $employee->id ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $employee->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $employee->designation->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $employee->office->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $employee->mobile ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $employee->email ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $employee->nid ?? '' }}
-                                        </td>
-                                        <td>
-                                            @can('employee_show')
-                                                <a class="btn btn-xs btn-primary" href="{{ route('admin.employees.show', $employee->id) }}">
-                                                    {{ trans('global.view') }}
-                                                </a>
-                                            @endcan
-
-                                            @can('employee_edit')
-                                                <a class="btn btn-xs btn-info" href="{{ route('admin.employees.edit', $employee->id) }}">
-                                                    {{ trans('global.edit') }}
-                                                </a>
-                                            @endcan
-
-                                            @can('employee_delete')
-                                                <form action="{{ route('admin.employees.destroy', $employee->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                                </form>
-                                            @endcan
-
-                                        </td>
-
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </th>
+                                <th>
+                                    {{ trans('cruds.employee.fields.id') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.employee.fields.name') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.employee.fields.designation') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.employee.fields.office') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.employee.fields.mobile') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.employee.fields.email') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.employee.fields.payroll_emp') }}
+                                </th>
+                                <th>
+                                    {{ trans('cruds.employee.fields.is_active') }}
+                                </th>
+                                <th>
+                                    &nbsp;
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                                </td>
+                                <td>
+                                    <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                                </td>
+                                <td>
+                                    <select class="search">
+                                        <option value>{{ trans('global.all') }}</option>
+                                        @foreach($designations as $key => $item)
+                                            <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="search">
+                                        <option value>{{ trans('global.all') }}</option>
+                                        @foreach($offices as $key => $item)
+                                            <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                                </td>
+                                <td>
+                                    <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                                </td>
+                                <td>
+                                    <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                                </td>
+                                <td>
+                                    <select class="search" strict="true">
+                                        <option value>{{ trans('global.all') }}</option>
+                                        @foreach(App\Models\Employee::IS_ACTIVE_RADIO as $key => $item)
+                                            <option value="{{ $key }}">{{ $item }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
 
@@ -161,14 +117,14 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('employee_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
+  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.employees.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
-          return $(entry).data('entry-id')
+      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
+          return entry.id
       });
 
       if (ids.length === 0) {
@@ -190,12 +146,30 @@
   dtButtons.push(deleteButton)
 @endcan
 
-  $.extend(true, $.fn.dataTable.defaults, {
+  let dtOverrideGlobals = {
+    buttons: dtButtons,
+    processing: true,
+    serverSide: true,
+    retrieve: true,
+    aaSorting: [],
+    ajax: "{{ route('admin.employees.index') }}",
+    columns: [
+      { data: 'placeholder', name: 'placeholder' },
+{ data: 'id', name: 'id' },
+{ data: 'name', name: 'name' },
+{ data: 'designation_name', name: 'designation.name' },
+{ data: 'office_name', name: 'office.name' },
+{ data: 'mobile', name: 'mobile' },
+{ data: 'email', name: 'email' },
+{ data: 'payroll_emp', name: 'payroll_emp' },
+{ data: 'is_active', name: 'is_active' },
+{ data: 'actions', name: '{{ trans('global.actions') }}' }
+    ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
-  });
-  let table = $('.datatable-Employee:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  };
+  let table = $('.datatable-Employee').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
@@ -208,7 +182,7 @@
         .search(value, strict)
         .draw()
   });
-})
+});
 
 </script>
 @endsection

@@ -19,6 +19,11 @@ class Employee extends Model
         '2' => 'Female',
     ];
 
+    const IS_ACTIVE_RADIO = [
+        '1' => 'Active',
+        '0' => 'Inactive',
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -29,7 +34,7 @@ class Employee extends Model
         'name',
         'mobile',
         'email',
-        'nid',
+        'payroll_emp',
     ];
 
     protected $fillable = [
@@ -39,7 +44,8 @@ class Employee extends Model
         'mobile',
         'email',
         'sex',
-        'nid',
+        'payroll_emp',
+        'is_active',
         'created_at',
         'updated_at',
         'deleted_at',

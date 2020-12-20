@@ -9,7 +9,7 @@ class CreateMaintenanceHistoriesTable extends Migration
     public function up()
     {
         Schema::create('maintenance_histories', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->date('date');
             $table->string('cost');
             $table->longText('work_detail');

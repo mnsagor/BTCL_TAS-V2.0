@@ -9,9 +9,12 @@ class CreateOfficesTable extends Migration
     public function up()
     {
         Schema::create('offices', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('is_active')->nullable();
+            $table->string('address')->nullable();
+            $table->string('area')->nullable();
+            $table->string('contact')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

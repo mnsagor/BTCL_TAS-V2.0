@@ -13,22 +13,74 @@ use App\Models\Office;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
 {
     use CsvImportTrait;
 
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('employee_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $employees = Employee::all();
+        if ($request->ajax()) {
+            $query = Employee::with(['designation', 'office'])->select(sprintf('%s.*', (new Employee)->table));
+            $table = Datatables::of($query);
+
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'employee_show';
+                $editGate      = 'employee_edit';
+                $deleteGate    = 'employee_delete';
+                $crudRoutePart = 'employees';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+            $table->editColumn('name', function ($row) {
+                return $row->name ? $row->name : "";
+            });
+            $table->addColumn('designation_name', function ($row) {
+                return $row->designation ? $row->designation->name : '';
+            });
+
+            $table->addColumn('office_name', function ($row) {
+                return $row->office ? $row->office->name : '';
+            });
+
+            $table->editColumn('mobile', function ($row) {
+                return $row->mobile ? $row->mobile : "";
+            });
+            $table->editColumn('email', function ($row) {
+                return $row->email ? $row->email : "";
+            });
+            $table->editColumn('payroll_emp', function ($row) {
+                return $row->payroll_emp ? $row->payroll_emp : "";
+            });
+            $table->editColumn('is_active', function ($row) {
+                return $row->is_active ? Employee::IS_ACTIVE_RADIO[$row->is_active] : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'designation', 'office']);
+
+            return $table->make(true);
+        }
 
         $designations = Designation::get();
+        $offices      = Office::get();
 
-        $offices = Office::get();
-
-        return view('admin.employees.index', compact('employees', 'designations', 'offices'));
+        return view('admin.employees.index', compact('designations', 'offices'));
     }
 
     public function create()

@@ -75,10 +75,18 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.employee.fields.nid') }}
+                                        {{ trans('cruds.employee.fields.payroll_emp') }}
                                     </th>
                                     <td>
-                                        {{ $employee->nid }}
+                                        {{ $employee->payroll_emp }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        {{ trans('cruds.employee.fields.is_active') }}
+                                    </th>
+                                    <td>
+                                        {{ App\Models\Employee::IS_ACTIVE_RADIO[$employee->is_active] ?? '' }}
                                     </td>
                                 </tr>
                             </tbody>

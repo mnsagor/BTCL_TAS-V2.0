@@ -41,10 +41,9 @@ class StoreEmployeeRequest extends FormRequest
             'sex'            => [
                 'required',
             ],
-            'nid'            => [
+            'payroll_emp'    => [
                 'string',
-                'required',
-                'unique:employees',
+                'nullable',
             ],
         ];
     }

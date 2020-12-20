@@ -16,24 +16,67 @@ use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 class MaintenanceHistoryController extends Controller
 {
     use MediaUploadingTrait, CsvImportTrait;
 
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('maintenance_history_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $maintenanceHistories = MaintenanceHistory::all();
+        if ($request->ajax()) {
+            $query = MaintenanceHistory::with(['region_name', 'office_name', 'registration_number'])->select(sprintf('%s.*', (new MaintenanceHistory)->table));
+            $table = Datatables::of($query);
 
-        $regions = Region::get();
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
 
-        $offices = Office::get();
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'maintenance_history_show';
+                $editGate      = 'maintenance_history_edit';
+                $deleteGate    = 'maintenance_history_delete';
+                $crudRoutePart = 'maintenance-histories';
 
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+            $table->addColumn('region_name_name', function ($row) {
+                return $row->region_name ? $row->region_name->name : '';
+            });
+
+            $table->addColumn('office_name_name', function ($row) {
+                return $row->office_name ? $row->office_name->name : '';
+            });
+
+            $table->addColumn('registration_number_registration_number', function ($row) {
+                return $row->registration_number ? $row->registration_number->registration_number : '';
+            });
+
+            $table->editColumn('cost', function ($row) {
+                return $row->cost ? $row->cost : "";
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'region_name', 'office_name', 'registration_number']);
+
+            return $table->make(true);
+        }
+
+        $regions  = Region::get();
+        $offices  = Office::get();
         $vehicles = Vehicle::get();
 
-        return view('admin.maintenanceHistories.index', compact('maintenanceHistories', 'regions', 'offices', 'vehicles'));
+        return view('admin.maintenanceHistories.index', compact('regions', 'offices', 'vehicles'));
     }
 
     public function create()

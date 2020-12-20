@@ -9,7 +9,7 @@ class CreateDriversTable extends Migration
     public function up()
     {
         Schema::create('drivers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('emp_type')->nullable();
             $table->string('emp_number')->nullable();
@@ -18,6 +18,7 @@ class CreateDriversTable extends Migration
             $table->date('dl_validity_year');
             $table->string('is_posted')->nullable();
             $table->string('is_allocated')->nullable();
+            $table->string('is_active')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
